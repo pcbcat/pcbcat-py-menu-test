@@ -10,6 +10,7 @@ from os import system, name
 import time
 import random
 import math
+import os
 
 def clear():
     if name == 'nt':
@@ -42,8 +43,6 @@ def load():
             print("\rLoading", end='', flush=True)
     clear()
 
-
-
 def display_comparison():
     clear()
     num1 = random.randrange(1, 10)
@@ -72,6 +71,43 @@ def display_comparison():
     elif user_input == '3':
         clear()
         exit()
+
+def terminal():
+    print("Welcome to terminal\n")
+    print("Enter your username:")
+    username = input().strip().lower()
+
+    clear()
+    print("Welcome to Terminal")
+
+    while True:
+        # Display the prompt with username
+        command = input(username + "@terminal $ ").strip()
+
+        # Check for Python-defined commands first
+        if command == "exit":
+            break
+        
+        elif command == "compdst":
+            print("\n")
+            num1 = random.randrange(1, 10)
+            num2 = random.randrange(1, 10)
+            if num1 > num2:
+                print("Number one is greater than Number two!")
+                print(num1, ">", num2, "\n")
+            elif num1 < num2:
+                print("Number two is greater than Number one!")
+                print(num1, "<", num2, "\n")
+            else:
+                print("It's a Draw!")
+                print(num1, "=", num2, "\n")
+
+        elif command == "ver":
+            os.system(command)
+            print("PCBCat's Menu 1.0.3a")
+
+        else:
+            os.system(command)
 
 def square_root():
     print("Pick your Selection")
@@ -134,6 +170,7 @@ def menu():
     print("\nPick your Selection")
     print("[1] Number Comparison")
     print("[2] Square Root")
+    print("[3] Terminal")
     print("[9] Exit")
     user_input = input().strip().lower()
     if user_input == '1':
@@ -143,6 +180,10 @@ def menu():
     elif user_input == '2':
         load()
         square_root()
+        
+    elif user_input == '3':
+        load()
+        terminal()
 
     elif user_input == '9':
         clear()
